@@ -1,0 +1,6 @@
+google-api-python-client
+google-genai
+youtube-transcript-api
+python-dotenv
+requests
+
