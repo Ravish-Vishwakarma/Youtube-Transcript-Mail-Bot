@@ -67,14 +67,23 @@ def generate_email_html(videos: list) -> str:
     return generate(
         f"Create an HTML email newsletter about today's YouTube videos. "
         f"Style it like a modern neo-brutalist SaaS interface with: "
-        f"Swiss editorial typography, ultra-thin 1px borders, technical blueprint framing lines, "
-        f"corner crop marks, subtle offset shadows, monochrome UI panels, "
-        f"strict grid layout, spacious whitespace, futuristic enterprise software aesthetic. "
+        f"Swiss editorial typography, ultra-thin 1px borders, corner crop marks, "
+        f"subtle offset shadows, monochrome UI panels, strict grid layout. "
+        f"CRITICAL: Use margin:0 and padding:0 or minimal values (max 4px) on body and containers. "
+        f"No extra spacing, no large gaps, no centering with excessive whitespace. "
+        f"IMPORTANT: Do NOT add any fake system messages, terminal text, "
+        f"bracketed labels, coordinates, IP addresses, or sci-fi decorations. "
+        f"Keep it clean — just real content with the visual style. "
         f"Use a table layout with the video thumbnail on the left "
-        f"and a concise summary of what the video covers on the right. "
-        f"Each video is a row. Include clickable links on the thumbnail "
+        f"and a DETAILED summary of what the video covers on the right. "
+        f"Include actual key points, insights, or takeaways from the video — "
+        f"not just generic fluff. Each video is a row. "
+        f"Include clickable links on the thumbnail "
         f"and title pointing to https://youtube.com/watch?v=VIDEO_ID. "
-        f"Return ONLY valid HTML (no markdown, no code fences, no html wrapping).\n\n"
+        f"Return ONLY valid HTML inside a <table> (no markdown, no code fences, no html wrapping).\n\n"
         f"Videos:\n{videos_block}",
-        "You are a newsletter writer specialized in premium UI design. Return ONLY valid HTML.",
+        "You design clean, professional HTML email newsletters. "
+        "Use margin:0 and padding:0 everywhere. "
+        "Write substantive summaries with real takeaways from the content. "
+        "Do NOT include any fictional system messages. Return ONLY valid HTML.",
     )
