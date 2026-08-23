@@ -6,9 +6,13 @@ from mail import send_email
 
 CHANNELS = [
     "Fireship",
+    "mehulmpt",
     "theAIsearch",
     "bogxd",
-    "UpFlip",
+    "LowLevelTV",
+    "TwoMinutePapers",
+    "ThePrimeTimeagen",
+    "t3dotgg"
 ]
 
 

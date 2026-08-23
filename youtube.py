@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from googleapiclient.discovery import build
 from youtube_transcript_api import YouTubeTranscriptApi
 
@@ -58,12 +58,15 @@ def search_channel_videos(channel_id: str, query: str, max_results: int = 10):
     ]
 
 
-def get_todays_videos(channel_name: str):
+def get_todays_videos(channel_name: str, hours: int = 30):
     channel_id = get_channel_id(channel_name)
     videos = get_channel_videos(channel_id, max_results=10)
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
 
-    return [v for v in videos if v["published_at"].startswith(today)]
+    return [
+        v for v in videos
+        if datetime.fromisoformat(v["published_at"].replace("Z", "+00:00")) > cutoff
+    ]
 
 
 def get_transcript(video_id: str) -> str:
