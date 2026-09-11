@@ -104,6 +104,8 @@ TRANSCRIPT:
 
 
 def turn_into_html(content,video_metadata):
+    if content[:3] == "```":
+        content  = content[7:-3]
     content = json.loads(content)
     explanation = content["explanation"]
     videos = content["videos"]
