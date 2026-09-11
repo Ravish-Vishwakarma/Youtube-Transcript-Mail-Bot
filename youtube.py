@@ -38,24 +38,6 @@ def get_channel_videos(channel_id: str, max_results: int = 10):
     ]
 
 
-def search_channel_videos(channel_id: str, query: str, max_results: int = 10):
-    response = _get_youtube().search().list(
-        part="snippet",
-        channelId=channel_id,
-        q=query,
-        type="video",
-        maxResults=max_results,
-    ).execute()
-
-    return [
-        {
-            "video_id": item["id"]["videoId"],
-            "title": item["snippet"]["title"],
-            "published_at": item["snippet"]["publishedAt"],
-            "thumbnail_url": f"https://img.youtube.com/vi/{item['id']['videoId']}/hqdefault.jpg",
-        }
-        for item in response["items"]
-    ]
 
 
 def get_todays_videos(channel_name: str, hours: int = 30):

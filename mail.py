@@ -5,6 +5,7 @@ from helper import EMAIL_ADDRESS, EMAIL_PASSWORD, EMAIL_RECIPIENT
 
 
 def send_email(subject: str, body: str):
+    print(body)
     if not EMAIL_ADDRESS or not EMAIL_PASSWORD:
         print("Skipping email: EMAIL_ADDRESS or EMAIL_PASSWORD not set")
         return

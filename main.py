@@ -43,6 +43,7 @@ def main():
     dry_run = "--dry-run" in sys.argv
     videos = collect_todays_videos()
 
+    # ------------ MAIL ------------ #
     if not videos:
         print("No videos with transcripts to process")
         return
@@ -51,13 +52,14 @@ def main():
         print(f"\nDRY RUN — {len(videos)} video(s) collected, skipping AI and email")
         return
 
+    # ------------ MAIL ------------ #
     print(f"\nGenerating HTML newsletter for {len(videos)} video(s)...")
     try:
         html_body = generate_email_html(videos)
     except Exception as e:
         print(f"AI generation failed: {e}")
         return
-
+    # ------------ MAIL ------------ #
     send_email("📺 Today's YouTube Videos", html_body)
     print("Done!")
 
