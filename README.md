@@ -13,6 +13,25 @@ EMAIL_ADDRESS=
 EMAIL_PASSWORD=
 EMAIL_RECIPIENT=
 ```
+```mermaid
+flowchart TD
+    Main[Main] --> Collect[collect_todays_videos]
+    Collect --> Email[generate_email_html]
+    Email --> Send[send_email]
+
+    subgraph VideoCollection["Video collection"]
+        Collect --> GetVideos[get_todays_videos]
+        GetVideos --> Transcript[get_transcript]
+
+        GetVideos --> ChannelID[get_channel_id]
+        GetVideos --> ChannelVideos[get_channel_videos]
+    end
+
+    subgraph EmailGeneration["Email generation"]
+        Email --> Generate[generate]
+        Generate --> HTML[turn_into_html]
+    end
+```
 
 
 It makes a mail for the summary for the videos and mail it to you, like this:
